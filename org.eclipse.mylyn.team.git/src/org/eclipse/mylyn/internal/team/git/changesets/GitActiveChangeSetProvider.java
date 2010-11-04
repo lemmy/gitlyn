@@ -6,6 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * Contributors:
  *     Chris Aniszczyk <caniszczyk@gmail.com> - initial API and implementation
+ *     Markus Alexander Kuppe <egit@lemmster.de> 
  *******************************************************************************/
 
 package org.eclipse.mylyn.internal.team.git.changesets;
@@ -15,17 +16,22 @@ import org.eclipse.mylyn.team.ui.AbstractActiveChangeSetProvider;
 import org.eclipse.mylyn.team.ui.IContextChangeSet;
 import org.eclipse.team.internal.core.subscribers.ActiveChangeSetManager;
 
+@SuppressWarnings("restriction")
 public class GitActiveChangeSetProvider extends AbstractActiveChangeSetProvider {
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.mylyn.team.ui.AbstractActiveChangeSetProvider#getActiveChangeSetManager()
+	 */
 	@Override
-	public ActiveChangeSetManager getActiveChangeSetManager() {
-		// TODO
-		return null;
+	public synchronized ActiveChangeSetManager getActiveChangeSetManager() {
+		return org.eclipse.egit.ui.Activator.getDefault().getChangeSetManager();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.mylyn.team.ui.AbstractActiveChangeSetProvider#createChangeSet(org.eclipse.mylyn.tasks.core.ITask)
+	 */
 	@Override
 	public IContextChangeSet createChangeSet(ITask task) {
-		return null; // TODO
+		return new GitContextChangeSet(task, getActiveChangeSetManager());
 	}
-
 }
