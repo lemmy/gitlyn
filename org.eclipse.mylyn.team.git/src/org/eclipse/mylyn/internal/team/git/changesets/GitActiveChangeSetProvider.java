@@ -11,6 +11,8 @@
 
 package org.eclipse.mylyn.internal.team.git.changesets;
 
+import org.eclipse.egit.ui.ICommitMessageProposal;
+import org.eclipse.mylyn.internal.team.git.Activator;
 import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.team.ui.AbstractActiveChangeSetProvider;
 import org.eclipse.mylyn.team.ui.IContextChangeSet;
@@ -18,17 +20,35 @@ import org.eclipse.team.internal.core.subscribers.ActiveChangeSetManager;
 
 @SuppressWarnings("restriction")
 public class GitActiveChangeSetProvider extends AbstractActiveChangeSetProvider {
-	
-	/* (non-Javadoc)
-	 * @see org.eclipse.mylyn.team.ui.AbstractActiveChangeSetProvider#getActiveChangeSetManager()
+
+	private ActiveChangeSetManager instance;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.mylyn.team.ui.AbstractActiveChangeSetProvider#
+	 * getActiveChangeSetManager()
 	 */
 	@Override
 	public synchronized ActiveChangeSetManager getActiveChangeSetManager() {
-		return org.eclipse.egit.ui.Activator.getDefault().getChangeSetManager();
+		if (instance == null) {
+			instance = new GitActiveChangeSetManager();
+			Activator
+					.getDefault()
+					.getBundle()
+					.getBundleContext()
+					.registerService(ICommitMessageProposal.class.getName(),
+							instance, null);
+		}
+		return instance;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.mylyn.team.ui.AbstractActiveChangeSetProvider#createChangeSet(org.eclipse.mylyn.tasks.core.ITask)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.mylyn.team.ui.AbstractActiveChangeSetProvider#createChangeSet
+	 * (org.eclipse.mylyn.tasks.core.ITask)
 	 */
 	@Override
 	public IContextChangeSet createChangeSet(ITask task) {
