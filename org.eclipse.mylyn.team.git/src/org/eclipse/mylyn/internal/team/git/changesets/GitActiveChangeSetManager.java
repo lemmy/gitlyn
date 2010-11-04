@@ -9,24 +9,24 @@
  *******************************************************************************/
 package org.eclipse.mylyn.internal.team.git.changesets;
 
+import java.util.Date;
+
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.egit.ui.ICommitMessageProposal;
+import org.eclipse.egit.ui.ICommitDialogProposal;
 import org.eclipse.team.core.diff.IDiff;
 import org.eclipse.team.internal.core.subscribers.ActiveChangeSetManager;
 import org.eclipse.team.internal.core.subscribers.ChangeSet;
 
-/**
- *
- */
 @SuppressWarnings("restriction")
-public class GitActiveChangeSetManager extends ActiveChangeSetManager implements ICommitMessageProposal {
+public class GitActiveChangeSetManager extends ActiveChangeSetManager implements ICommitDialogProposal {
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.team.internal.core.subscribers.ActiveChangeSetManager#getDiff(org.eclipse.core.resources.IResource)
 	 */
 	@Override
 	public IDiff getDiff(IResource resource) throws CoreException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -35,6 +35,7 @@ public class GitActiveChangeSetManager extends ActiveChangeSetManager implements
 	 */
 	@Override
 	protected String getName() {
+		// TODO Auto-generated method stub
 		return ""; //$NON-NLS-1$
 	}
 
@@ -43,18 +44,42 @@ public class GitActiveChangeSetManager extends ActiveChangeSetManager implements
 	 */
 	@Override
 	protected void initializeSets() {
-		//nop
+		// TODO Auto-generated method stub
 	}
 
 	/* (non-Javadoc)
-	 * @see org.eclipse.egit.ui.ICommitMessageProposal#getCommitMessageProposal()
+	 * @see org.eclipse.egit.ui.ICommitDialogProposal#getMessage()
 	 */
-	public String getCommitMessageProposal() {
+	public String getMessage() {
 		final ChangeSet[] changeSets = getSets();
 		for (int i = 0; i < changeSets.length;) {
 			final ChangeSet changeSet = changeSets[i++];
 			return changeSet.getComment();
 		}
 		return ""; //$NON-NLS-1$
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.egit.ui.ICommitDialogProposal#getAuthor()
+	 */
+	public String getAuthor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.egit.ui.ICommitDialogProposal#getCommitter()
+	 */
+	public String getCommitter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.egit.ui.ICommitDialogProposal#getDate()
+	 */
+	public Date getDate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

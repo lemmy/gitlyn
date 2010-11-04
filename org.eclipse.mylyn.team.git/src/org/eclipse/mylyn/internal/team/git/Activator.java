@@ -45,9 +45,9 @@ public class Activator extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		
-		manager = TasksUi.getTaskActivityManager();
-		listener = new TaskActivationListener();
-		manager.addActivationListener(listener);
+//		manager = TasksUi.getTaskActivityManager();
+//		listener = new TaskActivationListener();
+//		manager.addActivationListener(listener);
 	}
 
 	/*

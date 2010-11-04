@@ -11,8 +11,9 @@
 
 package org.eclipse.mylyn.internal.team.git.changesets;
 
-import org.eclipse.egit.ui.ICommitMessageProposal;
-import org.eclipse.mylyn.internal.team.git.Activator;
+import org.eclipse.core.runtime.IAdapterFactory;
+import org.eclipse.egit.core.Activator;
+import org.eclipse.egit.ui.ICommitDialogProposal;
 import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.team.ui.AbstractActiveChangeSetProvider;
 import org.eclipse.mylyn.team.ui.IContextChangeSet;
@@ -37,7 +38,7 @@ public class GitActiveChangeSetProvider extends AbstractActiveChangeSetProvider 
 					.getDefault()
 					.getBundle()
 					.getBundleContext()
-					.registerService(ICommitMessageProposal.class.getName(),
+					.registerService(ICommitDialogProposal.class.getName(),
 							instance, null);
 		}
 		return instance;
