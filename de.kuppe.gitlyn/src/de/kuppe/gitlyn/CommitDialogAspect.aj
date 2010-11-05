@@ -14,6 +14,8 @@ import org.eclipse.mylyn.internal.team.ui.FocusedTeamUiPlugin;
 import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.tasks.core.ITaskActivityManager;
 import org.eclipse.mylyn.tasks.ui.TasksUi;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Composite;
 
 @SuppressWarnings("restriction")
 public aspect CommitDialogAspect {
@@ -23,12 +25,14 @@ public aspect CommitDialogAspect {
 	 * .dialogs.CommitDialog.createDialogArea(Composite) invocation
 	 */
 	pointcut getCommitMessage(CommitDialog commitDialog) : 
-		this(commitDialog) 
-		&& within(CommitDialog) 
-		&& get(private String CommitDialog.commitMessage);
+		this(commitDialog) // handle to cd
+		&& within(CommitDialog) // Scope only on class CommitDialog
+		&& execution(protected Control CommitDialog.createDialogArea(Composite)) // access to commitMessage member
+		&& !within(CommitDialogAspect); // exclude infinitive loops
 
 	before(CommitDialog cd): getCommitMessage(cd) {
-		if(cd.getCommitMessage() == null || cd.getCommitMessage().equals(""))
+		String commitMessage = cd.getCommitMessage();
+		if(commitMessage == null || commitMessage.equals(""))
 			cd.setCommitMessage(getCommitMessageFromCurrentTask());
 	}
 
