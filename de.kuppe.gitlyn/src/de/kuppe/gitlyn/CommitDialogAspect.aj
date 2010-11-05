@@ -7,7 +7,7 @@
  * Contributors:
  *     Markus Alexander Kuppe <egit@lemmster.de> - initial API and implementation
  *******************************************************************************/
-package org.eclipse.mylyn.internal.team.git.tasks;
+package de.kuppe.gitlyn;
 
 import org.eclipse.egit.ui.internal.dialogs.CommitDialog;
 import org.eclipse.mylyn.internal.team.ui.FocusedTeamUiPlugin;

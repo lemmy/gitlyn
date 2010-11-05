@@ -2,6 +2,6 @@
 <aspectj>
     <aspects>
         <aspect
-            name="org.eclipse.mylyn.internal.team.git.tasks.CommitDialogAspect" />
+            name="de.kuppe.gitlyn.CommitDialogAspect" />
     </aspects>
 </aspectj>
