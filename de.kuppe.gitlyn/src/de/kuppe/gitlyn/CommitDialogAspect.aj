@@ -28,7 +28,8 @@ public aspect CommitDialogAspect {
 		&& get(private String CommitDialog.commitMessage);
 
 	before(CommitDialog cd): getCommitMessage(cd) {
-		cd.setCommitMessage(getCommitMessageFromCurrentTask());
+		if(cd.getCommitMessage() == null || cd.getCommitMessage().equals(""))
+			cd.setCommitMessage(getCommitMessageFromCurrentTask());
 	}
 
 	/**
