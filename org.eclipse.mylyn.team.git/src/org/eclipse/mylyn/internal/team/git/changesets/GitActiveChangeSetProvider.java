@@ -11,7 +11,6 @@
 
 package org.eclipse.mylyn.internal.team.git.changesets;
 
-import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.egit.core.Activator;
 import org.eclipse.egit.ui.ICommitDialogProposal;
 import org.eclipse.mylyn.tasks.core.ITask;
