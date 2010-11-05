@@ -1,1 +1,5 @@
-TODO
+Install GitLyn from the zipped archived  (Window > Install New Software... > Add > Archive...)
+- Make sure to uncheck "Group items by category"
+
+Follow one of the ways to active JDT weaving outlined at
+http://wiki.eclipse.org/JDT_weaving_features#Turning_on_JDT_Weaving_manually
