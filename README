@@ -1,4 +1,4 @@
-1.) Install GitLyn  (Window > Install New Software... > Add > "http://www.kuppe.org/uploads/gitlyn")
+1.) Install GitLyn  (Window > Install New Software... > Add > http://www.kuppe.org/uploads/gitlyn)
 - Make sure to uncheck "Group items by category"
 
 2.) Follow one of the ways to active JDT weaving outlined at
