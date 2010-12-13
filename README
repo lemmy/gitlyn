@@ -5,5 +5,5 @@
 http://wiki.eclipse.org/JDT_weaving_features#Turning_on_JDT_Weaving_manually
 
 3.) If it does not work for you, contribute resources to bug #329515:
-https://bugs.eclipse.org/329515
+https://bugs.eclipse.org/329515 - Add API to provide CommitDialog proposals/templates
 
