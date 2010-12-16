@@ -37,7 +37,7 @@ public aspect CommitDialogAspect {
 	}
 
 	/**
-	 * @return The emptry String or a commit message from the current active
+	 * @return The empty String or a commit message from the current active
 	 *         task
 	 */
 	private static String getCommitMessageFromCurrentTask() {
